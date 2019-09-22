@@ -1,5 +1,4 @@
 version: 2.1
 
 description: |
-  Orb for building and publishing multi arch docker images. 
-  Full orb source code: https://github.com/arribada/circleci
+  Orb for building and publishing multi arch docker images. Full orb source code: https://github.com/arribada/circleci

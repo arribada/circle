@@ -19,10 +19,9 @@ steps:
       docker buildx inspect --bootstrap qemu
       docker buildx use qemu
       docker login --username=$DOCKERHUB_USER --password=$DOCKERHUB_PASS 
-
       [ -z "$CIRCLE_TAG" ] && echo "No release tag pushing to latest" || export CIRCLE_TAG=":$CIRCLE_TAG"
-    
       docker buildx build --progress=plain --platform linux/amd64,linux/arm/v7 -t $DOCKERHUB_REPO/<< parameters.containerName >>$CIRCLE_TAG --push .
+
 
 
 
