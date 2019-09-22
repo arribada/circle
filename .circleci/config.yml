@@ -9,8 +9,8 @@ workflows:
       - orb-tools/lint
       - orb-tools/pack:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: master
       # - orb-tools/publish-dev:
       #     orb-name: arribada/arribada
       #     publish-token-variable: CIRCLECI_API_TOKEN
@@ -21,7 +21,7 @@ workflows:
       #       branches:
       #         only: master
       - orb-tools/publish:
-          orb-ref: arribada/arribada@$CIRCLE_TAG
+          orb-ref: arribada/arribada@0.0.1
           publish-token-variable: CIRCLECI_API_TOKEN
           checkout: false
           attach-workspace: true
