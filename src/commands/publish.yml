@@ -3,7 +3,7 @@ parameters:
     type: string
 steps:
   - run: |
-      sudo apt update 
+      sudo apt update
       sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
       git clone https://github.com/computermouth/qemu-static-conf.git
       sudo mkdir -p /lib/binfmt.d
@@ -18,10 +18,10 @@ steps:
       docker buildx create --name=qemu
       docker buildx inspect --bootstrap qemu
       docker buildx use qemu
-      docker login --username=$DOCKERHUB_USER --password=$DOCKERHUB_PASS 
+      docker login --username=$DOCKERHUB_USER --password=$DOCKERHUB_PASS
+
       [ -z "$CIRCLE_TAG" ] && echo "No release tag pushing to latest" || export CIRCLE_TAG=":$CIRCLE_TAG"
       docker buildx build --progress=plain --platform linux/amd64,linux/arm/v7 -t $DOCKERHUB_REPO/<< parameters.containerName >>$CIRCLE_TAG --push .
-
 
 
 
