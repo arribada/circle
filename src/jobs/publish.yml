@@ -1,7 +1,13 @@
+description: >
+  Build and publish binaries and container images for a given release tag.
 parameters:
   containerName:
+    description: The container name when publishing it to docker hub
     type: string
+machine:
+- image: ubuntu-1604:201903-01
 steps:
+  - checkout  
   - run: |
       sudo apt update
       sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
