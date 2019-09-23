@@ -4,14 +4,14 @@ parameters:
   containerName:
     description: The container name when publishing it to docker hub
     type: string
-
-executor: << parameters.executor >>
-parameters:
   executor:
+    default: ubuntu
     description: |
       Executor to use for this job.
     type: executor
-steps:
+
+executor: << parameters.executor >>
+  steps:
 - checkout
 - run: |
     sudo apt update
