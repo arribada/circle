@@ -6,6 +6,11 @@ parameters:
     type: string
 
 executor: << parameters.executor >>
+parameters:
+  executor:
+    description: |
+      Executor to use for this job.
+    type: executor
 steps:
 - checkout
 - run: |
