@@ -4,6 +4,9 @@ parameters:
   containerName:
     description: The container name when publishing it to docker hub
     type: string
+
+orbs:
+  arriada: arribada/docker@0.0.7
 executor:
   name: arribada/ubuntu
 steps:
