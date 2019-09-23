@@ -5,7 +5,7 @@ parameters:
     description: The container name when publishing it to docker hub
     type: string
 executor:
-  machine: ubuntu-1604:201903-01
+  name: ubuntu
 steps:
 - checkout
 - run: |
