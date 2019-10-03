@@ -4,6 +4,10 @@ parameters:
   containerName:
     description: The container name when publishing it to docker hub
     type: string
+  buildContext:
+    description: The docker build context when searching for the Dockerfile
+    default: .
+    type: string
   executor:
     default: ubuntu
     description: |
@@ -32,4 +36,4 @@ steps:
     docker login --username=$DOCKERHUB_USER --password=$DOCKERHUB_PASS
 
     [ -z "$CIRCLE_TAG" ] && echo "No release tag pushing to latest" || export CIRCLE_TAG=":$CIRCLE_TAG"
-    docker buildx build --progress=plain --platform linux/amd64,linux/arm/v7 -t $DOCKERHUB_REPO/<< parameters.containerName >>$CIRCLE_TAG --push .
+    docker buildx build --progress=plain --platform linux/amd64,linux/arm/v7 -t $DOCKERHUB_REPO/<< parameters.containerName >>$CIRCLE_TAG --push << parameters.buildContext >>
