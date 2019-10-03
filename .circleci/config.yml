@@ -13,7 +13,7 @@ workflows:
               only: master
       - orb-tools/publish:
           context: org-context
-          orb-ref: arribada/docker@0.0.9
+          orb-ref: arribada/docker@0.0.11
           publish-token-variable: CIRCLECI_API_TOKEN
           checkout: false
           attach-workspace: true

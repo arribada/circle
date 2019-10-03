@@ -1,3 +1,4 @@
-description: >
+description: |
   Build and publish binaries and container images for a given release tag.
-machine: ubuntu-1604:201903-01
+machine:
+  image: ubuntu-1604:201903-01
