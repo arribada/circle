@@ -8,6 +8,10 @@ parameters:
     description: The docker build context when searching for the Dockerfile
     default: .
     type: string
+  afterCheckout:
+    description: "Steps that will be executed after checkout"
+    type: steps
+    default: []
   executor:
     default: ubuntu
     description: |
@@ -17,6 +21,7 @@ parameters:
 executor: << parameters.executor >>
 steps:
 - checkout
+- steps: << parameters.afterCheckout >>
 - run: |
     sudo apt update
     sudo apt install -y qemu qemu-user-static qemu-user binfmt-support
